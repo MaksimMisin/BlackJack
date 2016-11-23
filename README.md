@@ -17,16 +17,15 @@ Both server and a client contain `logback.xml` file, located in `src/main/resour
 ## API calls
 
 The base target for all api calls is `/blackjack_server/webapi`. Bellow is the summary of available requests
-[click on this link](#get-players)
 
 | URI                 | POST               | GET            | DELETE      |
 | ------------------- | ------------------ | -------------- | ----------- | 
-| /players            | Create new player  | List players   |             |
-| /players/john       |                    | Show John      | Delete John |
-| /players/john/topUp | Add money to balance  |
-| /players/john/bet   | Start new game with specified bet |
-| /players/john/hit   | Get extra card |
-| /players/john/stand | Finish game    |
+| /players            | [Create new player](#post-players)  | [List players](#get-players)   |             |
+| /players/john       |                    | [Show John](#get-players-john)      | [Delete John](#delte-players-john) |
+| /players/john/topUp | [Add money to balance](#post-players-john-topUp)  |
+| /players/john/bet   | [Start new game with specified bet](#post-players-john-bet) |
+| /players/john/hit   | [Get extra card](#post-players-john-hit) |
+| /players/john/stand | [Finish game](#post-players-john-stand)    |
 
 #### GET `/players`
 ----
