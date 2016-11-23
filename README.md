@@ -21,15 +21,16 @@ The base target for all api calls is `/blackjack_server/webapi`. Bellow is the s
 
 | URI                 | POST               | GET            | DELETE      |
 | ------------------- | ------------------ | -------------- | ----------- | 
-| /players            | [Create new player](#postplayers)  | [List players](#get-players)   |             |
-| /players/john       |                    | [Show John](#getplayersjohn)      | [Delete John](#delte-playersjohn) |
+| /players            | [Create new player](#postplayers)  | [List players](#getplayers)   |             |
+| /players/john       |                    | [Show John](#getplayersjohn)      | [Delete John](#delteplayersjohn) |
 | /players/john/topUp | [Add money to balance](#postplayersjohntopUp)  |
-| /players/john/bet   | [Start new game with specified bet](#post-playersjohnbet) |
-| /players/john/hit   | [Get extra card](#post-playersjohnhit) |
-| /players/john/stand | [Finish game](#post-playersjohnstand)    |
+| /players/john/bet   | [Start new game with specified bet](#postplayersjohnbet) |
+| /players/john/hit   | [Get extra card](#postplayersjohnhit) |
+| /players/john/stand | [Finish game](#postplayersjohnstand)    |
 
 An example of error message can be found [here](#error-message).
 
+<a name="getplayers"></a>
 #### GET `/players`
 ----
   List all players
@@ -39,7 +40,7 @@ An example of error message can be found [here](#error-message).
   * **Code:** 200  
     **Content:** `[{"name":"sam","balance":3.0},{"name":"john","balance":405.0}]`
     
-
+<a name="getplayersjohn"></a>
 #### GET `/players/john`
 ----
   Show John
@@ -49,9 +50,9 @@ An example of error message can be found [here](#error-message).
   **Code:** 200  
   **Content:** `{"name":"john","balance":405.0}`
 
+<a name="postplayers"></a>
 #### POST `/players`
 ----
-<a name="postplayers"></a>
   Create a new player
   
 * **Sample Call:**
@@ -62,9 +63,9 @@ An example of error message can be found [here](#error-message).
    **Code:** 201  
    **Content:** `{"playerId":"cc993800-18ac-46bf-b064-996b9d7210c1","name":"john","balance":0.0}`
 
+<a name="postplayersjohntopUp"></a>
 #### POST `/players/john/topUp`
 ----
-<a name="postplayersjohntopUp"></a>
   Add money to John's balance
   
 * **Sample Call:**
@@ -75,7 +76,8 @@ An example of error message can be found [here](#error-message).
    **Code:** 200  
    **Content:** `{"name":"john","balance":300.0}`
    
-#### POST `/players/john/hit`
+<a name="postplayersjohnbet"></a>
+#### POST `/players/john/bet`
 ----
   Start new game and bet some money
   
@@ -99,6 +101,7 @@ An example of error message can be found [here](#error-message).
  }
  ```
 
+<a name="postplayersjohnhit"></a>
 #### POST `/players/john/hit`
 ----
   Get another card
@@ -123,6 +126,7 @@ An example of error message can be found [here](#error-message).
 }
 ```
 
+<a name="postplayersjohnstand"></a>
 #### POST `/players/john/stand`
 ----
   Finish the game
@@ -147,6 +151,7 @@ An example of error message can be found [here](#error-message).
 }
  ```
 
+<a name="postplayersjohndelete"></a>
 #### DELETE `/players/john`
 ----
   Log out the player
