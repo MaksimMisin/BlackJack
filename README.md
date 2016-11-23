@@ -21,7 +21,7 @@ The base target for all api calls is `/blackjack_server/webapi`. Bellow is the s
 | URI                 | POST               | GET            | DELETE      |
 | ------------------- | ------------------ | -------------- | ----------- | 
 | /players            | [Create new player](#post-players)  | [List players](#get-players)   |             |
-| /players/john       |                    | [Show John](#get-players-john)      | [Delete John](#delte-players-john) |
+| /players/john       |                    | [Show John](#get-playersjohn)      | [Delete John](#delte-players-john) |
 | /players/john/topUp | [Add money to balance](#post-players-john-topUp)  |
 | /players/john/bet   | [Start new game with specified bet](#post-players-john-bet) |
 | /players/john/hit   | [Get extra card](#post-players-john-hit) |
