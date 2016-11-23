@@ -14,6 +14,7 @@ This will re-build both java archives and place them in the previoulsy specified
 ### Configuration
 Both server and a client contain `logback.xml` file, located in `src/main/resources` directory. Using it one can configure both the level as well as the destination of log messages (by default they are printed in a console). Additionally, blackjack_server contains `config.properties` file that can be used to change security settings and adjust minimum bet.
 
+
 ## API calls
 
 The base target for all api calls is `/blackjack_server/webapi`. Bellow is the summary of available requests
@@ -21,11 +22,13 @@ The base target for all api calls is `/blackjack_server/webapi`. Bellow is the s
 | URI                 | POST               | GET            | DELETE      |
 | ------------------- | ------------------ | -------------- | ----------- | 
 | /players            | [Create new player](#post-players)  | [List players](#get-players)   |             |
-| /players/john       |                    | [Show John](#get-playersjohn)      | [Delete John](#delte-players-john) |
-| /players/john/topUp | [Add money to balance](#post-players-john-topUp)  |
-| /players/john/bet   | [Start new game with specified bet](#post-players-john-bet) |
-| /players/john/hit   | [Get extra card](#post-players-john-hit) |
-| /players/john/stand | [Finish game](#post-players-john-stand)    |
+| /players/john       |                    | [Show John](#get-playersjohn)      | [Delete John](#delte-playersjohn) |
+| /players/john/topUp | [Add money to balance](#post-playersjohntopUp)  |
+| /players/john/bet   | [Start new game with specified bet](#post-playersjohnbet) |
+| /players/john/hit   | [Get extra card](#post-playersjohnhit) |
+| /players/john/stand | [Finish game](#post-playersjohnstand)    |
+
+An example of error message can be found [here](#error-message).
 
 #### GET `/players`
 ----
@@ -154,7 +157,15 @@ The base target for all api calls is `/blackjack_server/webapi`. Bellow is the s
    **Code:** 200  
    **Content:**  `{"name":"john", "balance":310.0}`
    
-   
+### Error message
 
+In case a player wants to perform an illegal action the server returns an error
+message that typically looks like this:
+```js
+{"timestamp":"2016-11-23T13:06:50.628+02:00",
+"responseStatus":"NOT_FOUND",
+"statusCode":404,
+"errorMessage":"Requested player was not found."}
+```
 
 
