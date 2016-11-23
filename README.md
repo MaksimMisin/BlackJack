@@ -22,7 +22,7 @@ The base target for all api calls is `/blackjack_server/webapi`. Bellow is the s
 | URI                 | POST               | GET            | DELETE      |
 | ------------------- | ------------------ | -------------- | ----------- | 
 | /players            | [Create new player](#postplayers)  | [List players](#getplayers)   |             |
-| /players/john       |                    | [Show John](#getplayersjohn)      | [Delete John](#delteplayersjohn) |
+| /players/john       |                    | [Show John](#getplayersjohn)      | [Delete John](#deleteplayersjohn) |
 | /players/john/topUp | [Add money to balance](#postplayersjohntopUp)  |
 | /players/john/bet   | [Start new game with specified bet](#postplayersjohnbet) |
 | /players/john/hit   | [Get extra card](#postplayersjohnhit) |
@@ -151,7 +151,7 @@ An example of error message can be found [here](#error-message).
 }
  ```
 
-<a name="postplayersjohndelete"></a>
+<a name="deleteplayersjohn"></a>
 #### DELETE `/players/john`
 ----
   Log out the player
