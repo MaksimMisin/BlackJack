@@ -1,0 +1,6 @@
+com/github/maksmshn/blackjack_server/database/DatabaseTest.class
+com/github/maksmshn/blackjack_server/game/PlayerTest.class
+com/github/maksmshn/blackjack_server/game/HandTest.class
+com/github/maksmshn/blackjack_server/game/DeckTest.class
+com/github/maksmshn/blackjack_server/game/TableTest.class
+com/github/maksmshn/blackjack_server/webapi/WebApiTest.class

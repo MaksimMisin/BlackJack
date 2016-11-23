@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{10} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+	<root level="debug">
+	    <withJansi>true</withJansi>
+		<appender-ref ref="STDOUT" />
+	</root>
+	
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/>
+
+</configuration>

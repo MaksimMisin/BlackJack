@@ -1,0 +1,15 @@
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/webapi/LoggingFilter.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/webapi/PlayerResource.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/webapi/ClientRequest.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/webapi/ErrorMessage.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/game/Deck.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/game/Table.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/game/Player.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/webapi/PlayerService.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/BlackJackConfig.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/Properties.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/database/Database.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/game/Hand.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/webapi/ServerReply.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/game/Card.java
+/Users/max/Documents/programming/Java/workspace/blackjack_server/src/main/java/com/github/maksmshn/blackjack_server/game/Rank.java
