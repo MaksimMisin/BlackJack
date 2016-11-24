@@ -1,6 +1,9 @@
 package com.github.maksmshn.blackjack_client.view;
 
 import java.io.IOException;
+import java.util.function.Supplier;
+
+import javax.ws.rs.ProcessingException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -69,7 +72,8 @@ public class GameWindowController {
 		logger.debug("Trying to top up: {}",topUpField.getText());
 		if (!topUpField.getText().isEmpty()) {
 			double amount = Double.parseDouble(topUpField.getText());
-			updateGameWindow(api.topUp(amount));
+			Supplier<String> apiCall = () -> api.topUp(amount);
+			updateGameWindow(apiCall);
 		}
     }
 
@@ -80,7 +84,8 @@ public class GameWindowController {
 			double amount = Double.parseDouble(betField.getText());
 			//Extra check to reduce communication with server
 			if (amount <= Double.parseDouble(playerMoney.getText())) {
-				updateGameWindow(api.bet(amount));
+				Supplier<String> apiCall = () -> api.bet(amount);
+				updateGameWindow(apiCall);
 			} else {
 				mainApp.showError("Game error",
 						"The bet cannot exceed the balance.");
@@ -113,13 +118,15 @@ public class GameWindowController {
     @FXML
     private void handleStand() {
 		logger.debug("Player stands on his hand");
-		updateGameWindow(api.stand());
+		Supplier<String> apiCall = () -> api.stand();
+		updateGameWindow(apiCall);
     }
 
     @FXML
     private void handleHit() {
 		logger.debug("Player hits!");
-		updateGameWindow(api.hit());
+		Supplier<String> apiCall = () -> api.hit();
+		updateGameWindow(apiCall);
     }
 
 	/**
@@ -151,24 +158,45 @@ public class GameWindowController {
     	});
     }
 
-    private void updateGameWindow(String response) {
-    	logger.info("The server response is: {}",response);
-    	ServerReply sr;
+    /**
+     * To avoid code duplication the method became a bit ugly,
+     * but it tries to catch a multiple things that can go wrong.
+     * Maybe it can be split further...
+     * @param apiCall
+     */
+    private void updateGameWindow(Supplier<String> apiCall) {
+    	//First we check if the server is available
     	try {
-			sr = mapper.readValue(response, ServerReply.class);
-	    	processServerReply(sr);
-    	} catch (IOException e) {
-    		String errorMessage;
-			try {
-				ErrorMessage er = mapper.readValue(response, ErrorMessage.class);
-				errorMessage = er.getErrorMessage();
-			} catch (IOException e1) {
-				errorMessage = response;
-			}
-    		mainApp.showError("Sever error", errorMessage);
+    		String response = apiCall.get();
+        	logger.info("The server response is: {}",response);
+        	ServerReply sr;
+        	//then we check if we can parse the message
+        	try {
+    			sr = mapper.readValue(response, ServerReply.class);
+    	    	processServerReply(sr);
+        	} catch (IOException e) {
+        		String errorMessage;
+        		//Not all exceptions can be mapped to errorMessage, so we
+        		//check it as well.
+    			try {
+    				ErrorMessage er = mapper.readValue(response, ErrorMessage.class);
+    				errorMessage = er.getErrorMessage();
+    			} catch (IOException e1) {
+    				errorMessage = response;
+    			}
+        		mainApp.showError("Sever error", errorMessage);
+        	}
+    	} catch (ProcessingException e) {
+    		logger.warn("Could not connect to the server.");
+    		mainApp.showError("Sever became unavailable!",
+    				"Check your connection");
     	}
     }
 
+    /** Update game window using valid
+     * server response.
+     * @param sr
+     */
     private void processServerReply(ServerReply sr) {
     	logger.debug("Sever reply is {}", sr);
     	// Round down to nearest .01.
